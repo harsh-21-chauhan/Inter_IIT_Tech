@@ -1,0 +1,94 @@
+
+{% load static %} 
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<title>ConnectHub - Social Feed</title>
+<link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
+<link as="style" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Be+Vietnam+Pro:wght@400;500;700;900&amp;family=Noto+Sans:wght@400;500;700;900" onload="this.rel='stylesheet'" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#13a4ec",
+            "background-light": "#f6f7f8",
+            "background-dark": "#101c22",
+            "surface-light": "#ffffff",
+            "surface-dark": "#1a2a33",
+            "text-primary-light": "#101c22",
+            "text-primary-dark": "#f6f7f8",
+            "text-secondary-light": "#617c89",
+            "text-secondary-dark": "#a0b8c4",
+            "border-light": "#e3e8eb",
+            "border-dark": "#2e4553"
+          },
+          fontFamily: {
+            "display": ["Be Vietnam Pro", "sans-serif"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.5rem",
+            "lg": "0.75rem",
+            "xl": "1rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+<style>
+    .icon {
+      width: 1.25rem;
+      height: 1.25rem;
+    }
+  </style>
+</head>
+<body class="bg-background-dark font-display text-text-primary-dark">
+<div class="flex flex-col min-h-screen">
+<header class="bg-surface-dark/80 backdrop-blur-sm sticky top-0 z-10 border-b border-border-dark">
+<div class="container mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex items-center justify-between h-16">
+<div class="flex items-center space-x-8">
+<a class="flex items-center space-x-2" href="#">
+<svg class="h-6 w-6 text-primary" fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path d="M6 6H42L36 24L42 42H6L12 24L6 6Z" fill="currentColor"></path></svg>
+<span class="text-xl font-bold">InterIIT</span>
+</a>
+<nav class="hidden md:flex items-center space-x-6">
+<a class="text-sm font-medium text-text-primary-dark hover:text-primary transition-colors" href="{% url 'home' %}">Home</a>
+<a class="text-sm font-medium text-text-secondary-dark hover:text-primary transition-colors" href="#">Explore</a>
+</nav>
+</div>
+<div class="flex items-center space-x-4">
+    <a href="{% url 'logoutUser' %}">
+<button class="bg-primary text-white px-4 py-2 rounded-full text-sm font-bold hover:bg-primary/90 transition-all duration-300 transform hover:scale-105 flex items-center gap-2">
+<span>Logout</span>
+<svg fill="currentColor" height="16" viewBox="0 0 256 256" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M120,208a8,8,0,0,1-8,8H48a16,16,0,0,1-16-16V56A16,16,0,0,1,48,40h64a8,8,0,0,1,0,16H48V200h64A8,8,0,0,1,120,208ZM229.66,122.34l-40-40a8,8,0,0,0-11.32,11.32L204.69,120H112a8,8,0,0,0,0,16h92.69l-26.35,26.34a8,8,0,0,0,11.32,11.32l40-40A8,8,0,0,0,229.66,122.34Z"></path></svg>
+</button>
+</a>
+</div>
+</div>
+</div>
+</header>
+<main class="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+<div class="max-w-3xl mx-auto">
+<h2 class="text-xl font-bold mb-4 px-2">All Posts</h2>
+{% for post in posts %}
+<div class="space-y-4">
+<div class="bg-surface-dark p-4 rounded-lg shadow-sm border border-border-dark">
+<div class="flex md:items-start md:space-x-6 flex-col-reverse md:flex-row gap-4">
+<div class="flex-1">
+<p class="font-bold">{{post.title}}</p>
+<p class="text-sm text-text-secondary-dark mt-1">{{post.overview}}</p>
+<a href="{% url 'postDetails' post_id=post.id %}"><button class="mt-4 text-sm font-medium text-primary hover:text-primary/90 transition-colors">Read More</button></a>
+</div>
+<div class="w-full md:w-48 h-40 rounded-lg bg-cover bg-center shrink-0" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDtTCVTW_0H-mu7x3tvYOUqfOLUs7iITmgw3M2v0qKKZpNSTx0Gtd9BLiw08PispuUF1sQHaCSua2pgeQ8rZRuZ4VbLotnKnA0huLn1v06lhsOrwzVo_EL7VeHcUu5e2KkC-c5Dj7sozTzySqpMNDQb6feNRAd2U6PfMCtXLqo8c24ILBdDzoDkpsPa1r7nFqO5CA3uGD2im6FuQxLTX8s0LbNhBuv7hAoqNdMlTvi3ij85zPuqW1h_jrsd6BKhCsSQnDE6ijFDEN4");'></div>
+</div>
+</div>
+</div>
+{% endfor %}
+</div>
+</main>
+</div>
+</body></html>
