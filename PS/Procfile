@@ -1,1 +1,2 @@
-web: gunicorn PS.wsgi
+web: gunicorn PS.wsgi --log-file -
+
