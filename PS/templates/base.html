@@ -6,10 +6,9 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>{% block title %}Posts{% endblock %}</title>
 
-  <!-- Tailwind CDN for quick development -->
+  <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Small helper styles so your form-input class looks consistent -->
   
   {% block extra_head %}{% endblock %}
 </head>
@@ -34,7 +33,7 @@
 
   <!-- Main container -->
   <main class="max-w-3xl mx-auto px-4 py-8">
-    <!-- Messages (Django messages framework) -->
+    <!-- Messages  -->
     {% if messages %}
       <div class="mb-6 space-y-2">
         {% for message in messages %}

@@ -8,7 +8,7 @@
       {{ comment.content }}
     </p>
 
-    <!-- Reply button toggles the reply form for this comment -->
+    <!-- Reply button -->
   <button
   class="text-xs font-medium text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 mt-2 transition-colors duration-200"
   type="button"
@@ -17,7 +17,7 @@
 </button>
 
 
-    <!-- Reply form for this comment (hidden by default) -->
+    <!-- Reply form for this comment -->
     <form method="post" id="reply-form-{{ comment.id }}" action="{{ request.path }}" class="hidden mt-3">
       {% csrf_token %}
       <input type="hidden" name="parent_id" value="{{ comment.id }}">
@@ -31,7 +31,7 @@
 
     </form>
 
-    <!-- Nested replies: recursively include this same partial for each reply -->
+    <!-- Nested replies -->
     <div class="mt-4 pl-6 border-l border-slate-200 dark:border-slate-700 space-y-4">
       {% for reply in comment.replies.all %}
         {% include "comment_item.html" with comment=reply %}
